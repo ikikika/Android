@@ -70,6 +70,22 @@ public class MainActivity extends AppCompatActivity {
 
                     playAgainButton.setVisibility(View.VISIBLE);
                     winnerTextView.setVisibility(View.VISIBLE);
+                } else {
+                    boolean gameIsOver = true;
+                    for (int counterState : gameState) {
+                        if(counterState == 2) gameIsOver = false;
+                    }
+
+                    if(gameIsOver) {
+                        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+
+                        TextView winnerTextView = (TextView) findViewById(R.id.winnertextView);
+
+                        winnerTextView.setText("draw");
+
+                        playAgainButton.setVisibility(View.VISIBLE);
+                        winnerTextView.setVisibility(View.VISIBLE);
+                    }
                 }
             }
         }
