@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.GridLayout;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -60,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
                     } else {
                         winner = "red";
                     }
-                    Toast.makeText(this, winner + " has won", Toast.LENGTH_SHORT).show();
 
                     Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
 
@@ -73,6 +73,28 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    public void playAgain( View view ){
+        Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+        TextView winnerTextView = (TextView) findViewById(R.id.winnertextView);
+
+        playAgainButton.setVisibility(View.INVISIBLE);
+        winnerTextView.setVisibility(View.INVISIBLE);
+
+        android.support.v7.widget.GridLayout gridLayout = (android.support.v7.widget.GridLayout) findViewById(R.id.gridLayout);
+
+        for( int i=0; i < gridLayout.getChildCount(); i++ ){
+            ImageView counter = (ImageView) gridLayout.getChildAt(i);
+            counter.setImageDrawable(null);
+        }
+
+        for( int i=0; i<gameState.length; i++ ){
+            gameState[i] = 2;
+        }
+
+        activePlayer = 0;
+        gameActive = true;
     }
 
     @Override
