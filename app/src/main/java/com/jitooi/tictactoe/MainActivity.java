@@ -4,7 +4,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -59,6 +61,15 @@ public class MainActivity extends AppCompatActivity {
                         winner = "red";
                     }
                     Toast.makeText(this, winner + " has won", Toast.LENGTH_SHORT).show();
+
+                    Button playAgainButton = (Button) findViewById(R.id.playAgainButton);
+
+                    TextView winnerTextView = (TextView) findViewById(R.id.winnertextView);
+
+                    winnerTextView.setText(winner + " has won");
+
+                    playAgainButton.setVisibility(View.VISIBLE);
+                    winnerTextView.setVisibility(View.VISIBLE);
                 }
             }
         }
