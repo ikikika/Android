@@ -18,6 +18,12 @@ public class MainActivity extends AppCompatActivity {
     int score = 0;
     int numberOfQuestions = 0;
     TextView scoreTextView;
+    Button button0;
+    Button button1;
+    Button button2;
+    Button button3;
+    TextView sumTextView;
+
 
     public void chooseAnswer( View view ){
         if( Integer.toString(locationOfCorrectAnswer).equals( view.getTag().toString() ) ){
@@ -28,27 +34,15 @@ public class MainActivity extends AppCompatActivity {
         }
         numberOfQuestions++;
         scoreTextView.setText( Integer.toString(score) + "/" + Integer.toString(numberOfQuestions) );
+
+        newQuestion();
     }
 
     public void start( View view){
 
     }
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        TextView sumTextView = findViewById(R.id.sumTextView);
-        Button button0 = findViewById(R.id.button0);
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        resultTextView = findViewById(R.id.resultTextView);
-        scoreTextView = findViewById(R.id.scoreTextView);
-
-        goButton = findViewById(R.id.goButton);
-
+    public void newQuestion(){
         Random rand = new Random();
 
         int a = rand.nextInt( 21 );
@@ -57,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         sumTextView.setText(Integer.toString(a) + " + " + Integer.toString(b));
 
         locationOfCorrectAnswer = rand.nextInt(4);
+
+        answers.clear();
 
         for( int i = 0; i < 4; i++){
             if( i == locationOfCorrectAnswer ){
@@ -74,6 +70,23 @@ public class MainActivity extends AppCompatActivity {
         button1.setText(Integer.toString(answers.get(1)));
         button2.setText(Integer.toString(answers.get(2)));
         button3.setText(Integer.toString(answers.get(3)));
+    }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        sumTextView = findViewById(R.id.sumTextView);
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        resultTextView = findViewById(R.id.resultTextView);
+        scoreTextView = findViewById(R.id.scoreTextView);
+
+        goButton = findViewById(R.id.goButton);
+
+        newQuestion();
     }
 }
