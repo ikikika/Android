@@ -25,7 +25,31 @@ public class MainActivity extends AppCompatActivity {
     Button button3;
     TextView sumTextView;
     TextView timerTextView;
+    Button playAgainButton;
 
+
+    public void playAgain( View view ){
+        score = 0;
+        numberOfQuestions = 0;
+        timerTextView.setText("30s");
+        scoreTextView.setText( Integer.toString(score) + "/" + Integer.toString(numberOfQuestions) );
+
+        newQuestion();
+
+        new CountDownTimer(5100, 1000){
+
+            @Override
+            public void onTick(long l) {
+                timerTextView.setText( String.valueOf( l / 1000 ) + "s" );
+            }
+
+            @Override
+            public void onFinish() {
+                resultTextView.setText("Times up!");
+                playAgainButton.setVisibility(View.VISIBLE);
+            }
+        }.start();
+    }
 
     public void chooseAnswer( View view ){
         if( Integer.toString(locationOfCorrectAnswer).equals( view.getTag().toString() ) ){
@@ -87,22 +111,12 @@ public class MainActivity extends AppCompatActivity {
         resultTextView = findViewById(R.id.resultTextView);
         scoreTextView = findViewById(R.id.scoreTextView);
         timerTextView = findViewById(R.id.timerTextView);
+        playAgainButton = findViewById(R.id.playAgainButton);
 
         goButton = findViewById(R.id.goButton);
 
-        newQuestion();
+        playAgain(timerTextView);
 
-        new CountDownTimer(30100, 1000){
 
-            @Override
-            public void onTick(long l) {
-                timerTextView.setText( String.valueOf( l / 1000 ) + "s" );
-            }
-
-            @Override
-            public void onFinish() {
-                resultTextView.setText("Times up!");
-            }
-        }.start();
     }
 }
