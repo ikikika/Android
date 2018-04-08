@@ -1,6 +1,7 @@
 package com.jitooi.braintrainer;
 
 import android.os.CountDownTimer;
+import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
     TextView timerTextView;
     Button playAgainButton;
     boolean isTimerRunning = false;
+    ConstraintLayout gameLayout;
 
     public void playAgain( View view ){
         score = 0;
@@ -38,8 +40,9 @@ public class MainActivity extends AppCompatActivity {
         newQuestion();
 
         playAgainButton.setVisibility(View.INVISIBLE);
+        resultTextView.setText("");
 
-        new CountDownTimer(5100, 1000){
+        new CountDownTimer(30100, 1000){
 
             @Override
             public void onTick(long l) {
@@ -75,7 +78,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start( View view){
-
+        goButton.setVisibility(View.INVISIBLE);
+        gameLayout.setVisibility(View.VISIBLE);
+        playAgain(timerTextView);
     }
 
     public void newQuestion(){
@@ -122,10 +127,13 @@ public class MainActivity extends AppCompatActivity {
         scoreTextView = findViewById(R.id.scoreTextView);
         timerTextView = findViewById(R.id.timerTextView);
         playAgainButton = findViewById(R.id.playAgainButton);
+        gameLayout = findViewById(R.id.gameLayout);
 
         goButton = findViewById(R.id.goButton);
 
-        playAgain(timerTextView);
+        goButton.setVisibility(View.VISIBLE);
+        gameLayout.setVisibility(View.INVISIBLE);
+
 
 
     }
