@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView sumTextView;
     TextView timerTextView;
     Button playAgainButton;
-
+    boolean isTimerRunning = false;
 
     public void playAgain( View view ){
         score = 0;
@@ -36,32 +37,41 @@ public class MainActivity extends AppCompatActivity {
 
         newQuestion();
 
+        playAgainButton.setVisibility(View.INVISIBLE);
+
         new CountDownTimer(5100, 1000){
 
             @Override
             public void onTick(long l) {
                 timerTextView.setText( String.valueOf( l / 1000 ) + "s" );
+                isTimerRunning = true;
             }
 
             @Override
             public void onFinish() {
                 resultTextView.setText("Times up!");
                 playAgainButton.setVisibility(View.VISIBLE);
+                isTimerRunning = false;
             }
         }.start();
     }
 
     public void chooseAnswer( View view ){
-        if( Integer.toString(locationOfCorrectAnswer).equals( view.getTag().toString() ) ){
-            resultTextView.setText("Correct");
-            score++;
-        } else {
-            resultTextView.setText("Wrong");
-        }
-        numberOfQuestions++;
-        scoreTextView.setText( Integer.toString(score) + "/" + Integer.toString(numberOfQuestions) );
 
-        newQuestion();
+        if (!isTimerRunning) {
+            Toast.makeText(this, "Tap 'Play Again' to start a new game", Toast.LENGTH_SHORT).show();
+        } else {
+            if (Integer.toString(locationOfCorrectAnswer).equals(view.getTag().toString())) {
+                resultTextView.setText("Correct");
+                score++;
+            } else {
+                resultTextView.setText("Wrong");
+            }
+            numberOfQuestions++;
+            scoreTextView.setText(Integer.toString(score) + "/" + Integer.toString(numberOfQuestions));
+
+            newQuestion();
+        }
     }
 
     public void start( View view){
