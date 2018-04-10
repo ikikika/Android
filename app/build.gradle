@@ -5,7 +5,11 @@ android {
     defaultConfig {
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
         applicationId "com.jitooi.androidweatherapp"
+=======
+        applicationId "com.jitooi.android_json_demo"
+>>>>>>> 0de531f... initial commit
 =======
         applicationId "com.jitooi.android_json_demo"
 >>>>>>> 0de531f... initial commit

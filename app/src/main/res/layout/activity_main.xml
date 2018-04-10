@@ -8,6 +8,7 @@
 
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
     <ImageView
         android:id="@+id/imageView"
         android:layout_width="wrap_content"
@@ -77,6 +78,8 @@
 =======
 =======
 >>>>>>> 0de531f... initial commit
+=======
+>>>>>>> 0de531f... initial commit
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -87,6 +90,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+>>>>>>> 0de531f... initial commit
+=======
 >>>>>>> 0de531f... initial commit
 =======
 >>>>>>> 0de531f... initial commit
