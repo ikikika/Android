@@ -4,6 +4,8 @@ import android.os.AsyncTask;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import org.json.JSONObject;
+
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
@@ -39,6 +41,30 @@ public class MainActivity extends AppCompatActivity {
                 return null;
             }
         }
+<<<<<<< HEAD
+=======
+
+        @Override
+        // write some code when doInBackground is finished,
+        // this should not touch anything from UI
+        // String s is what the result from doInBackground
+        protected void onPostExecute(String s) {
+            super.onPostExecute(s);
+
+            //Log.i("JSON", s);
+            try{
+                JSONObject jsonObject = new JSONObject(s);
+
+                String weatherInfo = jsonObject.getString("weather");
+
+                Log.i("Weather Content", weatherInfo);
+
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+
+        }
+>>>>>>> 0b350ba... accessing items in json object
     }
 
     @Override
