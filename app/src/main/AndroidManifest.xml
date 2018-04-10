@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
 <<<<<<< HEAD
+<<<<<<< HEAD
     package="com.jitooi.androidweatherapp">
+=======
+    package="com.jitooi.android_json_demo">
+>>>>>>> 0de531f... initial commit
 =======
     package="com.jitooi.android_json_demo">
 >>>>>>> 0de531f... initial commit
