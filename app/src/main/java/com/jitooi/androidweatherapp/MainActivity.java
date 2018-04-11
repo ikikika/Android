@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
 
             } catch (Exception e){
                 e.printStackTrace();
+                Toast.makeText(getApplicationContext(),"Could not identify city", Toast.LENGTH_SHORT);
                 return null;
             }
         }
@@ -104,10 +106,14 @@ public class MainActivity extends AppCompatActivity {
 
                 if( !message.equals("") ){
                     resultTextview.setText(message);
+                } else {
+                    Toast.makeText(getApplicationContext(),"Could not identify city", Toast.LENGTH_SHORT);
                 }
 
             } catch (Exception e){
+                Toast.makeText(getApplicationContext(),"Could not identify city", Toast.LENGTH_SHORT);
                 e.printStackTrace();
+
             }
 
         }
