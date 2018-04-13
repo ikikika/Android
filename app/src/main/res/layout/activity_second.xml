@@ -19,6 +19,9 @@
         tools:layout_editor_absoluteY="64dp" />
 
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 76418d4... pass name from first activity to second
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
@@ -30,7 +33,10 @@
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+<<<<<<< HEAD
 >>>>>>> e880109... 2 ways of going back to previous activity
 =======
 >>>>>>> e0e58fe... refresh app, set up listview with list of names
+=======
+>>>>>>> 76418d4... pass name from first activity to second
 </android.support.constraint.ConstraintLayout>
