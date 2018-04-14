@@ -118,6 +118,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     @Override
     public void onMapLongClick(LatLng latLng) {
-
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Your new memorable place"));
     }
 }
