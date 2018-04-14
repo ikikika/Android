@@ -21,7 +21,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity extends FragmentActivity implements OnMapReadyCallback,GoogleMap.OnMapLongClickListener{
 
     LocationManager locationManager;
     LocationListener locationListener;
@@ -75,6 +75,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setOnMapLongClickListener(this);
+
         Intent intent = getIntent();
         if( intent.getIntExtra("placeNumber", 0) == 0 ){
             //zoom in on user location
@@ -112,6 +114,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
         }
+
+    }
+    @Override
+    public void onMapLongClick(LatLng latLng) {
 
     }
 }
