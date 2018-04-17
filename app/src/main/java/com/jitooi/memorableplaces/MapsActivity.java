@@ -166,6 +166,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.jitooi.memorableplaces", Context.MODE_PRIVATE);
 
+        try{
+
+            sharedPreferences.edit().putString("places", ObjectSerializer.serialize(MainActivity.places)).apply();
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+
         Toast.makeText(this, "Location saved!", Toast.LENGTH_SHORT).show();
     }
 }
