@@ -29,6 +29,16 @@ public class MainActivity extends AppCompatActivity {
 
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.jitooi.memorableplaces", Context.MODE_PRIVATE);
 
+        ArrayList<String> latitudes = new ArrayList<>();
+        ArrayList<String> longitudes = new ArrayList<>();
+
+        try{
+
+            places = (ArrayList<String>) ObjectSerializer.deserialize( sharedPreferences.getString("places", ObjectSerializer.serialize(new ArrayList<String>()) ) );
+
+        } catch (Exception e){
+            e.printStackTrace();
+        }
 
         ListView listView = findViewById(R.id.listView);
 
