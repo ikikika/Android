@@ -35,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         try{
 
             places = (ArrayList<String>) ObjectSerializer.deserialize( sharedPreferences.getString("places", ObjectSerializer.serialize(new ArrayList<String>()) ) );
+            latitudes = (ArrayList<String>) ObjectSerializer.deserialize( sharedPreferences.getString("lats", ObjectSerializer.serialize(new ArrayList<String>()) ) );
+            longitudes = (ArrayList<String>) ObjectSerializer.deserialize( sharedPreferences.getString("lons", ObjectSerializer.serialize(new ArrayList<String>()) ) );
 
         } catch (Exception e){
             e.printStackTrace();
