@@ -32,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
         ArrayList<String> latitudes = new ArrayList<>();
         ArrayList<String> longitudes = new ArrayList<>();
 
+        places.clear();
+        latitudes.clear();
+        longitudes.clear();
+        locations.clear();
+
         try{
 
             places = (ArrayList<String>) ObjectSerializer.deserialize( sharedPreferences.getString("places", ObjectSerializer.serialize(new ArrayList<String>()) ) );
