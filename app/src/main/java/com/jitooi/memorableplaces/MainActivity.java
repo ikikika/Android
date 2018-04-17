@@ -47,6 +47,18 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
 
+        if( places.size() > 0 && latitudes.size() > 0 && longitudes.size() > 0 ){ //check if arrays are present
+            if( places.size() == latitudes.size() && places.size() == longitudes.size() ){ // check if arrays are of the same size
+                for(int i = 0; i<places.size(); i++ ){
+                    locations.add( new LatLng( Double.parseDouble(latitudes.get(i)), Double.parseDouble(longitudes.get(i)) ) );
+
+                }
+            } else {
+                //probably means first time the app is opened
+                locations.add( new LatLng( 0, 0 ) );
+            }
+        }
+
         ListView listView = findViewById(R.id.listView);
 
         places.add("Add a new place...");
