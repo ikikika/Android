@@ -10,12 +10,13 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
+    TextView textView;
+
     public void setLanguage(String language){
-        SharedPreferences sharedPreferences = this.getSharedPreferences("com.jitooi.languagepreferences", Context.MODE_PRIVATE);
 
-        sharedPreferences.edit().putString("language", language);
+        sharedPreferences.edit().putString("language", language).apply();
 
-        TextView textView = findViewById(R.id.textView);
         textView.setText(language);
     }
 
@@ -23,25 +24,35 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        textView = findViewById(R.id.textView);
+        sharedPreferences = this.getSharedPreferences("com.jitooi.languagepreferences", Context.MODE_PRIVATE);
 
-        new AlertDialog.Builder(this)
-                .setIcon(android.R.drawable.ic_btn_speak_now)
-                .setTitle("Choose a language")
-                .setMessage("Which language would you like to use?")
-                .setPositiveButton("English", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //set english
-                        setLanguage("English");
-                    }
-                })
-                .setNegativeButton("Spanish", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialogInterface, int i) {
-                        //set english
-                        setLanguage("Spanish");
-                    }
-                })
-                .show();
+        String language = sharedPreferences.getString("language", "Error");
+
+        if( language.equals("Error") ){
+            new AlertDialog.Builder(this)
+                    .setIcon(android.R.drawable.ic_btn_speak_now)
+                    .setTitle("Choose a language")
+                    .setMessage("Which language would you like to use?")
+                    .setPositiveButton("English", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //set english
+                            setLanguage("English");
+                        }
+                    })
+                    .setNegativeButton("Spanish", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            //set english
+                            setLanguage("Spanish");
+                        }
+                    })
+                    .show();
+        } else {
+            textView.setText(language);
+        }
+
+
     }
 }
