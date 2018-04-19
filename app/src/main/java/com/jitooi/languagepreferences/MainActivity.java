@@ -7,6 +7,10 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    public void setLanguage(String language){
+
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -20,13 +24,14 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //set english
-
+                        setLanguage("English");
                     }
                 })
                 .setNegativeButton("Spanish", new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         //set english
+                        setLanguage("Spanish");
                     }
                 })
                 .show();
