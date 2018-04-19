@@ -12,6 +12,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        new AlertDialog.Builder(this)
+                .setIcon(android.R.drawable.ic_btn_speak_now)
+                .setTitle("Choose a language")
+                .setMessage("Which language would you like to use?")
+                .setPositiveButton("English", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set english
 
+                    }
+                })
+                .setNegativeButton("Spanish", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        //set english
+                    }
+                })
+                .show();
     }
 }
