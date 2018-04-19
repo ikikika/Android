@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -13,6 +14,9 @@ public class MainActivity extends AppCompatActivity {
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.jitooi.languagepreferences", Context.MODE_PRIVATE);
 
         sharedPreferences.edit().putString("language", language);
+
+        TextView textView = findViewById(R.id.textView);
+        textView.setText(language);
     }
 
     @Override
