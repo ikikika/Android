@@ -11,6 +11,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setLanguage(String language){
         SharedPreferences sharedPreferences = this.getSharedPreferences("com.jitooi.languagepreferences", Context.MODE_PRIVATE);
+
+        sharedPreferences.edit().putString("language", language);
     }
 
     @Override
