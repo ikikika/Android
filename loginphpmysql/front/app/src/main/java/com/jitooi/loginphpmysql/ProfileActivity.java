@@ -3,8 +3,13 @@ package com.jitooi.loginphpmysql;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
+
+import org.w3c.dom.Text;
 
 public class ProfileActivity extends AppCompatActivity {
+
+    private TextView textViewUsername, textViewUserEmail;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,5 +20,12 @@ public class ProfileActivity extends AppCompatActivity {
             finish();
             startActivity(new Intent(this, LoginActivity.class));
         }
+
+        textViewUsername = (TextView) findViewById(R.id.textViewUsername);
+        textViewUserEmail = (TextView) findViewById(R.id.textViewUserEmail);
+
+        textViewUsername.setText(SharefPrefManager.getInstance(this).getUserName());
+        textViewUserEmail.setText(SharefPrefManager.getInstance(this).getUserEmail());
+
     }
 }
