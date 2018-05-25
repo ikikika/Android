@@ -1,6 +1,7 @@
 package com.jitooi.loginphpmysql;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -61,11 +62,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                                                 obj.getInt("id"),
                                                 obj.getString("username"),
                                                 obj.getString("email"));
-                                Toast.makeText(
-                                        getApplicationContext(),
-                                        "User Login Successful",
-                                        Toast.LENGTH_LONG
-                                ).show();
+//                                Toast.makeText(
+//                                        getApplicationContext(),
+//                                        "User Login Successful",
+//                                        Toast.LENGTH_LONG
+//                                ).show();
+
+                                startActivity(new Intent(getApplicationContext(), ProfileActivity.class));
+
                             } else {
                                 Toast.makeText(
                                         getApplicationContext(),
