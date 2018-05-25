@@ -2,7 +2,7 @@ package com.jitooi.loginphpmysql;
 
 public class Constants {
 
-    private static final String ROOT_URL = "http://192.168.1.196/Android/Android/loginphpmysql/back/v1/";
+    private static final String ROOT_URL = "https://lucidcoding.com/loginphpmysql/back/v1/";
     public static final String URL_REGISTER = ROOT_URL + "registerUser.php";
     public static final String URL_LOGIN = ROOT_URL + "userLogin.php";
 

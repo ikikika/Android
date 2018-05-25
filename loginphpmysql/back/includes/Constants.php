@@ -1,5 +1,5 @@
 <?php
-	define('DB_NAME','androidlogin');
-	define('DB_USER','root');
-	define('DB_PASSWORD','');
-	define('DB_HOST','localhost');
+	define('DB_NAME','loginphpmysql-333770eb');
+	define('DB_USER','loginphpmysql-333770eb');
+	define('DB_PASSWORD','123456789');
+	define('DB_HOST','shareddb-i.hosting.stackcp.net');
