@@ -54,7 +54,7 @@ public class SharefPrefManager {
 
         editor.clear();
         editor.apply();
-        
+
         return true;
     }
 }
