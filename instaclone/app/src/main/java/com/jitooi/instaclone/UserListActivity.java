@@ -22,9 +22,13 @@ import android.widget.Toast;
 import com.parse.FindCallback;
 import com.parse.Parse;
 import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
 import com.parse.ParseQuery;
 import com.parse.ParseUser;
+import com.parse.SaveCallback;
 
+import java.io.ByteArrayOutputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -57,7 +61,25 @@ public class UserListActivity extends AppCompatActivity {
         if( requestCode == 1 && resultCode == RESULT_OK && data != null ){
             try{
                 Bitmap bitmap = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImage);
-                Toast.makeText(this, "Image selected", Toast.LENGTH_SHORT).show();
+
+                ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                bitmap.compress(Bitmap.CompressFormat.PNG, 100, stream); //get img into correct format
+                byte[] byteArray = stream.toByteArray();
+                ParseFile file = new ParseFile("image.png", byteArray);
+                ParseObject object = new ParseObject("Image");
+                object.put("image", file);
+                object.put("username", ParseUser.getCurrentUser().getUsername());
+                object.saveInBackground(new SaveCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if( e == null ){
+                            Toast.makeText(UserListActivity.this, "Image has been shared.", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(UserListActivity.this, "Please try to upload again later.", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
             } catch (Exception e) {
                 e.printStackTrace();
             }
