@@ -1,0 +1,15 @@
+<resources>
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+    <string name="app_name">Android Weather App</string>
+=======
+    <string name="app_name">Android-json-demo</string>
+>>>>>>> 0de531f... initial commit
+=======
+    <string name="app_name">Android-json-demo</string>
+>>>>>>> 0de531f... initial commit
+=======
+    <string name="app_name">Android-json-demo</string>
+>>>>>>> 0de531f... initial commit
+</resources>
