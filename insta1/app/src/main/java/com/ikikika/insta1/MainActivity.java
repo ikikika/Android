@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -16,11 +17,26 @@ import com.parse.SignUpCallback;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+    Boolean signUpModeActive = true;
+    TextView loginTextView;
 
     @Override
     public void onClick(View view) {
         if( view.getId() == R.id.loginTextView){
-            Log.i("Switch ", "was tapped");
+//            Log.i("Switch ", "was tapped");
+
+            Button signUpButton = findViewById(R.id.signUpButton);
+
+            if(signUpModeActive){
+                signUpModeActive = false;
+                signUpButton.setText("Login");
+                loginTextView.setText("or, Sign Up");
+            } else {
+                signUpModeActive = true;
+                signUpButton.setText("Sign Up");
+                loginTextView.setText("or, Log In");
+            }
+
         }
     }
 
@@ -52,8 +68,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-        TextView loginTextView = findViewById(R.id.loginTextView);
+        loginTextView = findViewById(R.id.loginTextView);
         loginTextView.setOnClickListener(this);
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
