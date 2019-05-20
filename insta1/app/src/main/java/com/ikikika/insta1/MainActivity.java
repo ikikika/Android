@@ -1,5 +1,6 @@
 package com.ikikika.insta1;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.constraint.ConstraintLayout;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     EditText passwordEditText;
     ImageView logoImageView;
     ConstraintLayout backgroundLayout;
+
+    public void showUserList(){
+        Intent intent = new Intent(getApplicationContext(), UserListActivity.class);
+        startActivity(intent);
+    }
 
     @Override
     public boolean onKey(View view, int i, KeyEvent keyEvent) {
@@ -79,6 +85,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void done(ParseException e) {
                         if( e == null){
                             Log.i("Signup", "Success");
+                            showUserList();
                         } else {
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -92,6 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     public void done(ParseUser user, ParseException e) {
                         if( user != null ){
                             Log.i("Login", "successful!");
+                            showUserList();
                         } else {
                             Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
                         }
@@ -119,6 +127,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         logoImageView.setOnClickListener(this);
         backgroundLayout.setOnClickListener(this);
         passwordEditText.setOnKeyListener(this);
+
+        if( ParseUser.getCurrentUser() != null ){
+            showUserList();
+        }
 
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
