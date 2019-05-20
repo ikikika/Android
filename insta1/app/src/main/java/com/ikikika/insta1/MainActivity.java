@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.parse.ParseAnalytics;
@@ -13,8 +14,15 @@ import com.parse.ParseUser;
 import com.parse.SignUpCallback;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener{
 
+
+    @Override
+    public void onClick(View view) {
+        if( view.getId() == R.id.loginTextView){
+            Log.i("Switch ", "was tapped");
+        }
+    }
 
     public void signUpClicked(View view){
         EditText usernameEditText = findViewById(R.id.usernameEditText);
@@ -45,8 +53,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        TextView loginTextView = findViewById(R.id.loginTextView);
+        loginTextView.setOnClickListener(this);
+
         ParseAnalytics.trackAppOpenedInBackground(getIntent());
 
     }
+
 
 }
