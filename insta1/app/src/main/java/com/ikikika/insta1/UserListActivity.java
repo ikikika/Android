@@ -50,6 +50,11 @@ public class UserListActivity extends AppCompatActivity {
             } else {
                 getPhoto();
             }
+        } else if( item.getItemId() == R.id.logout ){
+
+            ParseUser.getCurrentUser().logOut();
+            ParseUser.logOut();
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
