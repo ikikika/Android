@@ -116,6 +116,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setTitle("Instaclone1");
+
+
         loginTextView = findViewById(R.id.loginTextView);
         loginTextView.setOnClickListener(this);
 
@@ -128,7 +132,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         backgroundLayout.setOnClickListener(this);
         passwordEditText.setOnKeyListener(this);
 
-        if( ParseUser.getCurrentUser() != null ){
+        if( ParseUser.getCurrentUser().getUsername() != null ){
             showUserList();
         }
 
