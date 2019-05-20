@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.parse.LogInCallback;
 import com.parse.ParseAnalytics;
 import com.parse.ParseException;
 import com.parse.ParseUser;
@@ -47,20 +48,40 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         if(usernameEditText.getText().toString().trim().length() == 0 || passwordEditText.getText().toString().trim().length() == 0){
             Toast.makeText(MainActivity.this, "Username and password required", Toast.LENGTH_SHORT).show();
         } else {
-            ParseUser user = new ParseUser();
-            user.setUsername(usernameEditText.getText().toString());
-            user.setPassword(passwordEditText.getText().toString());
 
-            user.signUpInBackground(new SignUpCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if( e == null){
-                        Log.i("Signup", "Success");
-                    } else {
-                        Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+            if(signUpModeActive){
+                // sign up
+                ParseUser user = new ParseUser();
+                user.setUsername(usernameEditText.getText().toString());
+                user.setPassword(passwordEditText.getText().toString());
+
+                user.signUpInBackground(new SignUpCallback() {
+                    @Override
+                    public void done(ParseException e) {
+                        if( e == null){
+                            Log.i("Signup", "Success");
+                        } else {
+                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                }
-            });
+                });
+
+            } else {
+                // login
+                ParseUser.logInInBackground(usernameEditText.getText().toString(), passwordEditText.getText().toString(), new LogInCallback() {
+                    @Override
+                    public void done(ParseUser user, ParseException e) {
+                        if( user != null ){
+                            Log.i("Login", "successful!");
+                        } else {
+                            Toast.makeText(MainActivity.this, e.getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+
+
+            }
+
         }
     }
 
